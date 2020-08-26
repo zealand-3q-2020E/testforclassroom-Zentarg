@@ -8,22 +8,22 @@ namespace ClassRoom
 {
     public class KlasseRum
     {
-        public string KlasseNavn { get; set; }
+        public string NameofClass { get; set; }
 
-        public List<studerende> Klasseliste { get; set; }
+        public List<Student> ListOfClass { get; set; }
 
         public DateTime SemesterStart { get; set; }
 
         public KlasseRum()
         {
-            Klasseliste = new List<studerende>();
+            ListOfClass = new List<Student>();
             SemesterStart = new DateTime();
         }
 
-        public void HvilkenÅrstid()
+        public void WhichSeason()
         {
             var resultliste  = 
-                this.Klasseliste.GroupBy(x => x.Årstid())
+                this.ListOfClass.GroupBy(x => x.Season())
                 .Select(aarstidGroup => new {
                     aarstid = aarstidGroup.Key,
                     countAarstid = aarstidGroup.Count()
@@ -31,7 +31,7 @@ namespace ClassRoom
 
             foreach (var item in resultliste)
             {
-                Console.WriteLine($"Årstid: {item.aarstid} antal: {item.countAarstid} ");
+                Console.WriteLine($"Season: {item.aarstid} Count: {item.countAarstid} ");
 
             }
         }
